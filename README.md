@@ -29,9 +29,8 @@ The Flight Management System is designed to handle various tasks within a flight
 3. Configure the PostgreSQL database connection in the source code.
 
 ### Database Setup
-Set up the PostgreSQL database and add the necessary tables and schema as required by the application.
-
-Update the SQL queries and configuration in your Java code to match your setup.
+- Set up the PostgreSQL database and add the necessary tables and schema as required by the application.
+- Update the SQL queries and configuration in your Java code to match your setup.
 
 ## Application Screenshot
 ![Login Type](https://github.com/user-attachments/assets/00a9348b-682f-4c97-89f0-2e6549a8f5f4)
