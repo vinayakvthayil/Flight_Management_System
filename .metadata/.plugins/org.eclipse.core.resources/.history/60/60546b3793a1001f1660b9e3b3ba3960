@@ -1,0 +1,42 @@
+public MainScreen() {
+    setBackground(Color.LIGHT_GRAY);
+    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    setBounds(100, 100, 610, 445);
+    contentPane = new JPanel();
+    contentPane.setBackground(Color.LIGHT_GRAY);
+    contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+    contentPane.setLayout(new BorderLayout());
+    setContentPane(contentPane);
+
+    // Create and add the image panel
+    ImagePanel panel = new ImagePanel(new ImageIcon("D:\\Projects\\FlightManagementSystem\\FlightManagementSystem\\1523.jpg").getImage());
+    contentPane.add(panel, BorderLayout.CENTER);
+
+    // Add label and buttons on top of image panel
+    panel.setLayout(null); // Set layout for image panel if using null layout for absolute positioning
+
+    JLabel lblNewLabel = new JLabel("Welcome to Flight Management System ");
+    lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 18));
+    lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+    lblNewLabel.setBounds(81, 11, 450, 28);
+    panel.add(lblNewLabel);
+
+    JButton btnNewButton = new JButton("Click here to select your login type");
+    btnNewButton.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            ModeSelection obj = new ModeSelection();
+            obj.setVisible(true);
+        }
+    });
+    btnNewButton.setBounds(158, 125, 290, 23);
+    panel.add(btnNewButton);
+
+    JButton btnNewButton_1 = new JButton("Exit");
+    btnNewButton_1.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            System.exit(0);
+        }
+    });
+    btnNewButton_1.setBounds(450, 277, 89, 23);
+    panel.add(btnNewButton_1);
+}

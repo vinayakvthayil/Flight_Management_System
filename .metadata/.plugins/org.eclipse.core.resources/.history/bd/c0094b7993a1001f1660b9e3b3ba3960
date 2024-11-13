@@ -1,0 +1,81 @@
+import java.awt.*;
+import javax.swing.*;
+
+public class MainScreen extends JFrame {
+
+    private JPanel contentPane;
+
+    public static void main(String[] args) {
+        EventQueue.invokeLater(() -> {
+            try {
+                MainScreen frame = new MainScreen();
+                frame.setVisible(true);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
+    public MainScreen() {
+        setBackground(Color.LIGHT_GRAY);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setBounds(100, 100, 610, 445);
+        contentPane = new JPanel();
+        contentPane.setBackground(Color.LIGHT_GRAY);
+        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+        contentPane.setLayout(new BorderLayout());
+        setContentPane(contentPane);
+
+        // Attempt to load the image
+        Image img = new ImageIcon("D:\\Projects\\FlightManagementSystem\\FlightManagementSystem\\1523.jpg").getImage();
+        if (img == null) {
+            System.out.println("Image not found or path is incorrect.");
+        }
+
+        // Create and add ImagePanel
+        ImagePanel panel = new ImagePanel(img);
+        contentPane.add(panel, BorderLayout.CENTER);
+
+        // Add label and buttons to the image panel
+        panel.setLayout(null);
+
+        JLabel lblNewLabel = new JLabel("Welcome to Flight Management System ");
+        lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 18));
+        lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        lblNewLabel.setBounds(81, 11, 450, 28);
+        panel.add(lblNewLabel);
+
+        JButton btnNewButton = new JButton("Click here to select your login type");
+        btnNewButton.addActionListener(e -> {
+            ModeSelection obj = new ModeSelection();
+            obj.setVisible(true);
+        });
+        btnNewButton.setBounds(158, 125, 290, 23);
+        panel.add(btnNewButton);
+
+        JButton btnNewButton_1 = new JButton("Exit");
+        btnNewButton_1.addActionListener(e -> System.exit(0));
+        btnNewButton_1.setBounds(450, 277, 89, 23);
+        panel.add(btnNewButton_1);
+    }
+
+    class ImagePanel extends JPanel {
+        private Image img;
+
+        public ImagePanel(Image img) {
+            this.img = img;
+            setLayout(null); // Set layout for panel if necessary
+        }
+
+        @Override
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            if (img != null) {
+                g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
+            } else {
+                g.setColor(Color.RED);
+                g.drawString("Image Not Found", getWidth() / 2 - 50, getHeight() / 2);
+            }
+        }
+    }
+}
